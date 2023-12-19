@@ -1,0 +1,625 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath} % for \text
+\usepackage{amssymb} % for set notation
+\usepackage{xcolor} % text color
+\usepackage[thinc]{esdiff} % derivatives
+\usepackage{wrapfig} % allows text wrapping around figures
+\usepackage{parskip} % for vertical distances and spacing in compiler
+\usepackage{array} % for systems of equations
+% \usepackage{multicol} % for side by side equations
+
+\title{Math 2D Summary}
+\author{asmet}
+\date{Fall 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This is a summary of the Math 2D content covered course 44260 with Professor Xiangwen Zhang. This course's textbook was the online and interactive ``Calculus: Early Transcendentals, 9th Edition" by James Stewart, Daniel Clegg, Saleem Watson and was accessible through Cengage.
+
+All figures are either copied from the textbook previously mentioned or were hand-drawn in Onenote by me. 
+
+
+
+
+\section{Chapter 10: Parametrics and Polars}
+
+\subsection{Calculus for Parametrics}
+A parametric curve is defined by one or more parametric equations that are functions of a parameter:
+$$x = f(t) \hspace{1 cm} y = g(t)$$
+$$(x,y) = (f(t),g(t))$$
+The function receives a single-variable input and outputs a point. In this scenario, a point of (x,y). 
+
+\subsubsection{Tangent Line}
+The equation of a tangent line to a parametric equation of $\mathbb{R}^2$ is the following, 
+$$y=\kappa(x-x_0)+y_0$$
+Such that $\kappa$ is the slope of the equation at point $(x(t_0),y(t_0))$ and is defined as the derivative of y with respect to x at that point. Given that $x = x(t)$ and $y = y(t)$, we can define slope to be derivative of y with respect to x if x and y are functions of t as follows,
+
+$$\diff{y}{x} = \frac{\diff{y}{t}}{\diff{x}{t}} =\frac{x'(t)}{y'(t)}$$
+This equation can be found through chain rule:
+$$\diff{y}{t}=\diff{y}{x}\cdot\diff{x}{t}$$
+
+There are cases that make it impossible to simply calculate this derivative, in such cases like $x'(t) = 0$, you must use a limit instead: 
+$$\diff{y}{x}_{t=t_0} = \lim_{t\to t_0}{\frac{x'(t)}{y'(t)}}$$
+
+\subsubsection{Concavity}
+The concavity of a parametric curve is determined by the second derivative. The following equations are used to show if 
+a single variable function is concave down (concave) and concave up (convex) respectively,
+$$\diff[2]{y}{x} < 0 \hspace{2 cm} \diff[2]{y}{x} > 0$$
+We can do the same for parametric equations, however, the second derivative is calculated by the following equation:
+$$\diff[2]{y}{x}=\diff{}{x}\left(\diff{y}{x}\right)=\frac{\diff{}{t}\left(\diff{y}{x}\right)}{\diff{x}{t}}$$
+
+\subsubsection{Arc Length}
+The arc length of a single variable function is given as,
+$$L=\int_a^b{\sqrt{1+\left(\diff{y}{x}\right)^2}}\text{d}x$$
+We can use this equation and the slope of a parametric curve to find the equation of the arc length of a parametric curve:
+$$L = \int_a^b{\sqrt{1+\left( \diff{y}{t} \middle/ \diff{x}{t} \right)^2}}\diff{x}{t}\text{d}t = 
+\int_{\alpha}^{\beta}\sqrt{\left(\diff{x}{t}\right)^2+\left(\diff{y}{t}\right)^2}\text{d}t$$
+
+\subsubsection{Area}
+We can find the area under a parametric curve by taking the infinite sum of infinitely thin rectangles. The area of the rectangles are found by multiplying the height, y(t), by the base, $\Delta{x}$. Using this idea, the area under the parametric curve can be given by the following equations. The first, if $x'(t) > 0$, and the second, if $x'(t) < 0$.
+$$A = \int_{\alpha}^{\beta}{y(t)x'(t)}\text{d}t$$
+$$A = \int_{\beta}^{\alpha}{y(t)x'(t)}\text{d}t$$ 
+
+
+\subsection{Calculus in Polar Coordinates}
+Polar coordinates are a separate method to describe points in space about an origin. The polar coordinate contains the radius and the angle from the polar axis $(r,\theta)$. This course is limited to polar coordinates in two dimensions ($\mathbb{R}^2$) Polar coordinates are related to Cartesian coordinates through the following equations, 
+$$r = \sqrt{x^2+y^2} \hspace{1 cm} \theta = \arctan\left({\frac{y}{x}}\right)$$
+$$x = r\cos{\theta} \hspace{1 cm} y = r\sin{\theta}$$
+For the following sections, consider the following that $r = r(\theta)$, $\alpha \leq \theta \leq \beta$.
+
+\subsubsection{Tangent Line}
+The slope of the line tangent to the polar curve at $\theta_0$ can be found by the equation below. This is very similar to finding the slope of parametric curves due to chain rule.  
+$$\diff{y}{x} = \frac{\diff{y}{\theta}}{\diff{x}{\theta}} =\frac{r'\sin{\theta}+r\cos{\theta}}{r'\cos{\theta}-r\sin{\theta}}$$
+
+\subsubsection{Arc Length}
+The arc length of a polar curve can be found through the following equation,
+$$L=\int_{\alpha}^{\beta}{\sqrt{[x'(\theta)]^2+[y'(\theta)]^2}}\text{d}\theta=\int_{\alpha}^{\beta}{\sqrt{[r(\theta)]^2+[r'(\theta)]^2}}\text{d}\theta$$
+
+\subsubsection{Area}
+The area enclosed by a polar curve can be found by the following equations,
+$$A = \int_{\alpha}^{\beta}{y(\theta)x'(\theta)\text{d}\theta} = \frac{1}{2} \int_{\alpha}^{\beta}{r^2}\text{d}\theta$$
+
+
+
+
+\section{Chapter 12: Vectors and the Geometry of Space}
+This chapter covers 3d coordinate systems, vectors, vector math, and 3d geometries and their functions. 
+
+\subsection{Vectors}
+A vector be defined geometrically as an arrow with a length, denoted by $\vec{u}$. You can say that vector $\vec{u}$ has start point $P_0$ and end point $P_1$ or you can say the vector has a specific length and direction. On the other hand, a scalar is a 1-dimensional quantity. 
+
+For the following section consider $\vec{u}$, $\vec{v}$, $\vec{w} \in$ $\mathbb{R}^3$, $\vec{u} := \langle u_1, u_2, u_3 \rangle$, $\vec{v} := \langle v_1, v_2, v_3 \rangle$, $\vec{w} := \langle w_1, w_2, w_3 \rangle$, and $\lambda$, $\mu \in$ $\mathbb{R}^1$ (lambda and mu are scalars). 
+
+\subsubsection{Algebraic Operations}
+Basically an attempt to extend simple arithmetic to vectors. Addition and subtraction work simply. Scalar multiplication too. However, due to the nature of vectors, you cannot simply multiple two vectors together. 
+
+\begin{wrapfigure}{r}{0.37\textwidth}
+    \includegraphics[width=0.37\textwidth]{VectorAddSub.png}
+    \label{fig:enter-label-1}
+\end{wrapfigure}
+
+Figure 1 demonstrates the geometric meaning behind adding and subtracting two vectors such that $\vec{u},\vec{v}\in P_0$. 
+
+The resultant vector of vector addition can be found as follows, 
+$$\vec{u}+\vec{v} = \langle u_1+v_1, u_2+v_2, u_3+v_3 \rangle$$
+Similarly, the resultant of vector subtractions is,
+$$\vec{u}-\vec{v} = \langle u_1-v_1, u_2-v_2, u_3-v_3 \rangle$$
+
+Scalar multiplication is multiplying a vector by a scalar; the product of a 1-dimensional quantity and a n-dimensional vector to get a n-dimensional vector: $\mathbb{R}^1 \cdot$ $\mathbb{R}^n \longrightarrow$ $\mathbb{R}^n$. This operation changes the magnitude but not the direction of a vector. For a 3-D vector, it can be defined as,
+$$\lambda \cdot \vec{u} = \langle \lambda \cdot u_1, \lambda \cdot u_2 , \lambda \cdot u_3 \rangle$$
+
+Algebraic Operations of Vectors and Scalar Multiplication has the following identities:
+\begin{align*} % * gets rid of equaition numbering
+&\text{1)} \hspace{1 cm} \vec{0} + \vec{u} = \vec{u} \\
+&\text{2)} \hspace{1 cm} \vec{u} + (-\vec{u}) = \vec{0} \\
+&\text{3)} \hspace{1 cm} \vec{u} + \vec{v} = \vec{v} + \vec{u} \\
+&\text{4)} \hspace{1 cm} (\vec{u}+\vec{v})+\vec{w}=\vec{u}+(\vec{v}+\vec{w})\\
+&\text{5)} \hspace{1 cm} 0\cdot\vec{u}=\vec{u}\cdot0=\vec{0}\\
+&\text{6)} \hspace{1 cm} 1\cdot\vec{u}=\vec{u}\cdot1=\vec{u} \\
+&\text{7)} \hspace{1 cm} (\lambda+\mu)\cdot\vec{u}=\lambda\cdot\vec{u}+\mu\cdot\vec{u}\\
+&\text{8)} \hspace{1 cm} \lambda\cdot(\vec{u}+\vec{v})=\lambda\cdot\vec{u}+\lambda\cdot\vec{v}\\
+&\text{9)} \hspace{1 cm} \lambda\cdot(\mu\cdot\vec{u})=(\lambda\cdot\mu)\cdot\vec{u}
+\end{align*}
+
+Remark from our teacher: A vector space (linear space) is any set with addition and scalar multiplication that satisfies the nine above identities such that $(V_{P_0},+,\cdot)$ is a vector space.    
+
+\subsubsection{Magnitude and Unit Vector}
+The magnitude is the length of a vector and can be found using the Pythagorean Theorem. 
+$$\lvert \vec{u} \rvert = \sqrt{u_1^2 + u_2^2 + u_3^2}$$
+A unit vector is any vector such that $\lvert \vec{u} \rvert = 1$. This vector is used to denote direction. To find the direction of any vector, use the following equation, 
+$$\hat{u} = \frac{\vec{u}}{\lvert \vec{u} \rvert}$$
+
+\subsubsection{Dot Product}
+The dot product is another multiplicative operation of vectors, this time, of two vectors resulting in a scalar: $\mathbb{R}^n \cdot$ $\mathbb{R}^n \longrightarrow$ $\mathbb{R}^1$. It is also referred to as the scalar product. This product is well defined for $\mathbb{R}^n, n \in \mathbb{Z}^+$.
+
+\begin{wrapfigure}{r}{0.45\textwidth}
+    \includegraphics[width=0.45\textwidth]{DotProduct.png}
+    \label{fig:enter-label-2}
+\end{wrapfigure}
+The algebraic properties of the dot product are:
+\begin{align*}
+    &1)\hspace{1 cm} \vec{0}\cdot\vec{u}=\vec{0} \\
+    &2)\hspace{1 cm} \vec{u}\cdot\vec{v}=\vec{v}\cdot\vec{u} \\
+    &3)\hspace{1 cm} \vec{u}\cdot(\vec{v}+\vec{w})=\vec{u}\cdot\vec{v}+\vec{u}\cdot\vec{w}\\
+    &4)\hspace{1 cm} (a\cdot\vec{u})\cdot{v}=a\cdot(\vec{u}\cdot\vec{v})\\
+    &5)\hspace{1 cm} \vec{u}\cdot\vec{u}=|\vec{u}|^2
+\end{align*}
+
+The dot product can be defined as both of the following, such that $\theta$ is the angle between vectors $\vec{a}$ and $\vec{b}$:
+$$\vec{a} \cdot \vec{b} = a_1b_1 + a_2b_2 + a_3b_3$$
+$$\vec{a} \cdot \vec{b} = \lvert \vec{a} \rvert \lvert \vec{b} \rvert \cos{\theta}$$
+From the second equation, we know 
+$$\vec{u} \parallel \vec{v} \Leftrightarrow \vec{u} \cdot \vec{u} = \lvert \vec{u} \rvert \lvert \vec{v} \rvert \Leftrightarrow \theta = 0$$
+$$\vec{u} \perp \vec{v} \Leftrightarrow \vec{u} \cdot \vec{u} = 0 \Leftrightarrow \theta = \frac{\pi}{2}$$
+
+
+\subsubsection{Cauchy-Schwarz Inequality}
+This is a really cool thing that the professor said was a consequence of the dot product. Not necessary to know for test. 
+$$|\langle\vec{u},\vec{v}\rangle|^2\leq\langle\vec{u},\vec{u}\rangle\cdot\langle\vec{v},\vec{v}\rangle$$
+$$(a_1b_1+a_2b_2+...+a_nb_n)^2\leq(a_1^2+a_2^2+...+a_n^2)(b_1^2+b_2^2+...+b_n^2)$$
+
+
+\subsubsection{Projections}
+\begin{wrapfigure}{r}{0.2\textwidth}
+    \includegraphics[width=0.2\textwidth]{VectorProjection.png}
+    \label{fig:enter-label-3}
+\end{wrapfigure}
+A projection is how much of one vector is in the same direction as another vector and can be calculated with the following, 
+$$\text{proj}_{\vec{a}}{\vec{b}} = \frac{\vec{a}\cdot\vec{b}}{\lvert\vec{a}\rvert} \cdot \frac{\vec{a}}{\lvert\vec{a}\rvert}$$
+A scalar projection is the magnitude of the vector projection,
+$$\text{comp}_{\vec{a}}{\vec{b}} = \frac{\vec{a}\cdot\vec{b}}{\lvert\vec{a}\rvert}$$
+
+\subsubsection{Cross Product}
+The cross product is another multiplicative operation between two 3-dimensional vectors that returns another 3-dimensional vector that is perpendicular to the first two ($\mathbb{R}^3 \times\mathbb{R}^3 \longrightarrow\mathbb{R}^3$). To find the direction of the cross product, you can use the right hand rule such that your four fingers curl from the first vector to the second and your thumb now points in the same direction as the cross product. The cross product can be found through these two methods,
+$$\vec{u} \times \vec{v} = \langle u_2v_3-u_3v_2, u_3v_1-u_1v_3, u_1v_2-u_2v_1 \rangle$$
+$$\vec{u} \times \vec{v} =
+\begin{vmatrix}
+\hat{i} & \hat{j} & \hat{k} \\ 
+u_1 & u_2 & u_3 \\ 
+v_1 & v_2 & v_3
+\end{vmatrix}
+=
+\begin{vmatrix}
+    u_2 & u_3 \\
+    v_2 & v_3
+\end{vmatrix}
+\cdot \hat{i} - 
+\begin{vmatrix}
+    u_1 & u_3 \\
+    v_1 & v_3
+\end{vmatrix}
+\cdot \hat{j} +
+\begin{vmatrix}
+    u_1 & u_2 \\
+    v_1 & v_2
+\end{vmatrix}
+\cdot \hat{k}$$
+The second equation gives the same resultant vector as the first. It uses the determinate of a matrix. We are not required to know determinants of matrices because that is Math 3A, Linear Algebra. 
+
+The geometric formulation of the cross product is as follows,
+$$\lvert \vec{u} \times \vec{v} \rvert = \lvert \vec{u} \rvert \lvert \vec{v} \rvert \sin{\theta}$$
+From this equation, we know,
+$$\vec{u} \parallel \vec{v} \Leftrightarrow \lvert \vec{u} \times \vec{v} \rvert = 0 \text{ and } \theta = 0$$
+$$\vec{u} \perp \vec{v} \Leftrightarrow \lvert \vec{u} \times \vec{v} \rvert = \lvert \vec{u} \rvert \lvert \vec{v} \rvert \text{ and } \theta = \frac{\pi}{2}$$
+
+In addition, we know that the area of the parallelogram defined by the two vectors is equal to the magnitude of the cross product. We know since the area of a parallelogram is equal to the magnitude of its base multiplied by the magnitude of its height. The geometric formulation of the cross product fits this definition.
+
+The algebraic properties of the cross product are:
+\begin{align*}
+    &1)\hspace{1 cm} \vec{u}\times\vec{0}=\vec{0} \\
+    &2)\hspace{1 cm} \vec{u}\times\vec{v}=-\vec{v}\times\vec{u} \\
+    &3)\hspace{1 cm} \lambda\cdot(\vec{u}\times\vec{v})=(\lambda\cdot\vec{u})\times\vec{v}=\vec{u}\times(\lambda\cdot\vec{v})\\ 
+    &4)\hspace{1 cm} \vec{u}\times(\vec{v}+\vec{w})=\vec{u}\times\vec{v}+\vec{u}\times\vec{w}\\
+    &5)\hspace{1 cm} \vec{u}\times\vec{u}=\vec{0}
+\end{align*}
+
+\subsubsection{Triple Product}
+The triple product is the name given to the following combination of operations that takes three vectors and outputs a scalar,
+$$V_{parallelpiped} = \vec{u} \cdot (\vec{v} \times \vec{w})$$
+The triple product is used to find the volume of a parallepiped described by three non-co-planar vectors. Similar reasoning as the area of a parallelogram results in this connection. 
+
+\subsection{Lines and Planes}
+We can define lines and planes in 3-dimensional space using vector equations. 
+
+\subsubsection{Lines in 3D Space}
+We define the vector equation of a line to be,
+$$L_1: \vec{r} = \vec{r_0} + t \cdot \vec{d}$$
+such that $r_0$ is some point on the line, $t$ is a parameter ($t\in\mathbb{R}^1$), and $\vec{d}$ is the direction vector. We can create a vector equation of a line,
+$$\langle x, y, z \rangle = \langle x_0,y_0,z_0\rangle+t\cdot\langle a,b,c\rangle= \langle x_0 + a \cdot t, y_0 + b\cdot t, z_0 + c \cdot t \rangle$$
+We can also create a set of parametric equations for the line, 
+$$\left\{\begin{array}{lr}
+x = x_0 + a \cdot t \\
+y = y_0 + b \cdot t \\
+z = z_0 + c \cdot t
+\end{array}
+\right.$$
+We can also create what is called a symmetric equation by solving fort in terms of x, y, and z individually,
+$$\frac{x - x_0}{a} = \frac{y - y_0}{b} = \frac{z - z_0}{c} \text{ if } a,b,c \neq 0$$
+
+\subsubsection{Planes in 3D Space}
+To define a plane in 3D space, you need a point on the plane ($P_0$) and the direction of a vector normal to its surface typically called the normal vector ($\vec{n}$)
+We can find the equation as follows since the normal vector must be perpendicular to a direction vector created between two points in the plane. We take point P $(x,y,z)$ and point $P_0$ $(x_0,y_0,z_0)$ so that $\vec{P_0P} = \langle x-x_0,y-y_0,z-z_0\rangle$,
+$$\vec{n} \perp \overrightarrow{P_0P}$$
+$$\Rightarrow \vec{n}\cdot\overrightarrow{P_0P}=0$$
+$$\Rightarrow \langle a,b,c\rangle\cdot\langle x-x_0,y-y_0,z-z_0\rangle=0$$
+We can define $\vec{r} = \langle x,y,z\rangle$ and $\vec{a} = \langle x-x_0,y-y_0,z-z_0\rangle$ to get the following equation, 
+$$\vec{r} \cdot \vec{n} = \vec{a} \cdot \vec{n}$$ 
+The equation can be expanded into this form which is very useful in solving problems. 
+$$ax + by + cz + d = 0$$
+
+\subsubsection{Special Surfaces}
+In this course, it is recommended we know six specific quadric surfaces. Quadric surfaces have the general form, 
+$$ax^2+by^2+cz^2+dxy+exz+fyz+gx+hy+iz+j=0$$
+\includegraphics[scale=0.285]{QuadricSurfaces.png}
+
+The main three that we should know follow this general form, 
+$$ax^2 + by^2 + cz^2 = 1$$
+Where the following restrictions describe an Ellipsoid, Paraboloid, and Hyperboloid in order,
+$$a,b,c > 0$$
+$$a,b > 0 \text{ and, } c = 0$$
+$$a,b > 0 \text{ and, } c < 0$$
+
+
+
+
+\subsection{Problems Involving Lines and Planes}
+We can have many lines and planes in 3D space and we can describe their relationships to each other mathematically. 
+
+\subsubsection{Line and Line}
+When we have two lines in space 3D space, we can have 3 situations: the two lines are parallel (non-intersecting), the two lines intersect at some point, or the lines are skew (non-intersecting and non-parallel).
+
+We can prove two lines are parallel by checking if the direction vectors are parallel using the following identities of parallel lines,
+$$\left\{\begin{array}{lr}
+\text{is } \vec{d_1} &= \lambda \cdot \vec{d_2}\\
+\text{is } \vec{d_1} \cdot \vec{d_2} &= \lvert\vec{d_1}\rvert\lvert\vec{d_2}\rvert \\
+\text{is } \vec{d_1} \times \vec{d_2} &= 0
+\end{array}
+\right.$$
+
+We can show two lines intersect at some point $P_0 = (x_0,y_0,z_0)$ by solving a system of equations,
+$$ L_1: 
+\left\{ \begin{array}{lr}
+x = x_1 + a \cdot t \\
+y = y_1 + b \cdot t \\
+z = z_1 + c \cdot t
+\end{array} \right.
+\hspace{1 cm} L_2: 
+\left\{ \begin{array}{lr}
+x = x_2 + d \cdot s \\
+y = y_2 + e \cdot s \\
+z = z_2 + f \cdot s 
+\end{array} \right. $$
+$$\left\{ \begin{array}{lr}
+x_1 + a = x_2 + d \\
+y_1 + b = y_2 + e \\
+z_1 + c = z_2 + f
+\end{array} \right.
+\text{ for some } s,t \in \mathbb{R}^1$$
+
+We can show two lines are skew if they fail the previous two tests. The lines fail to be parallel or intersect. 
+
+\subsubsection{Plane and Plane}
+With two planes in 3D space, there are two possible situations: they are parallel or the intersect in a line. To test if two planes are parallel, you simply need to test whether the normal vectors are parallel using the following identities, 
+$$\left\{\begin{array}{lr}
+\text{is } \vec{n_1} &= \lambda \cdot \vec{n_2}\\
+\text{is } \vec{n_1} \cdot \vec{n_2} &= \lvert\vec{n_1}\rvert\lvert\vec{n_2}\rvert \\
+\text{is } \vec{n_1} \times \vec{n_2} &= 0
+\end{array}
+\right.$$
+If the two planes are not parallel, then they intersect at a line. You can find the line through two methods. The first is to find the direction vector of the line and a point on the line separately. You can take the cross product of the normal vectors to find the line's direction vector. Then you can set either x, y, or z equal to 0 and solve the system of linear equations to find a point on the line. 
+$$P_1: a_1x + b_1y + c_1z + d_1 = 0 \hspace{1 cm} P_2: a_2x + b_2y + c_2z + d_2 = 0$$
+$$d = \vec{n_1} \times \vec{n_2}$$
+$$\left\{ \begin{array}{lr}
+a_1x + b_1y + c_1z + d_1 = 0 \\
+a_2x + b_2y + c_2z + d_2 = 0
+\end{array} \right.$$
+The second is to eliminate one variable in the system of equations, then set one of the remaining variables equal to a parameter. Then you can solve for the other two variables in terms of the parameter. This will give you three parametric equations from which you can create a line (I like to use this one but it wasn't the one taught in lecture). 
+
+\subsubsection{Distance}
+All the distance questions can be turned into a point and plane problem. The formula to find the distance between a point and plane is as follows, such that point $P_1 = (x_1,y_1,z_1)$ lines on the plane $ax_1+by_1+cz_1+d=0$ and point $P_0 = (x_0,y_0,z_0)$ does not lie on the plane,
+$$d = \frac{\lvert (ax_1+by_1+cz_1) - (ax_0+by_0+cz_0)\rvert}{\sqrt{a^2+b^2+c^2}}$$
+We can simplify this further using the equation of the plane,
+$$d = \frac{\lvert ax_0+by_0+cz_0+d\rvert}{\sqrt{a^2+b^2+c^2}}$$
+For the distance between parallel planes, the formula can be "simplified" to,
+$$d = \frac{\lvert d_1-d_2\rvert}{\sqrt{a^2+b^2+c^2}}$$
+For the minimum distance between two skew lines, you can create two parallel planes from the lines and find the distance between the planes. The normal vector of the planes are defined as,
+$$\vec{n} = \langle a,b,c \rangle = \vec{d_1} \times \vec{d_2}$$
+For the distance from a point to a line, you can imagine a parallelogram made by the direction vector of the line and the vector connecting a point $P_0$ on the line to the point that isn't on the line $P_1$,
+$$d = \frac{\lvert \overrightarrow{P_1P_0} \times \vec{d_1} \rvert}{\lvert \vec{d_1} \rvert}$$
+Some of these equations can be changed to find the shortest line that connects the given line to a point. There are methods to complete this using the dot product or the cross product. 
+
+
+\section{Chapter 13: Vector-Valued Function}
+Functions that take in one variable and output a vector. These are useful in describing the path of a moving object. 
+
+\subsection{Basic Elements of Vector-Valued Functions}
+The equation of a vector valued function is given as,
+$$\vec{r} = \left\langle f(t), g(t), h(t) \right\rangle = f(t)\cdot\hat{i} + g(t)\cdot\hat{j} + h(t)\cdot\hat{k}$$
+
+\subsubsection{Domain}
+A vector function only exists such that $\vec{r}$ exists.  This means that it only exists such that all individual parts of it exist at the same time. We can represent this using the intersection operator,
+$$\text{Domain of }\vec{r} = D(f) \cap D(g) \cap D(h)$$
+
+\subsubsection{Limits}
+The limit of a vector function is given as,
+$$\lim_{t\to a}\vec{r}(t) = \left\langle \lim_{t\to a}f(t), \lim_{t\to a}g(t), \lim_{t\to a}h(t) \right\rangle$$
+
+\subsubsection{Continuity}
+A vector function is continuous when $t = t_0$ if the following is satisfied,
+$$\lim_{t\to t_0}\vec{r}(t) = \vec{r}(t_0)$$
+
+\subsubsection{Derivatives}
+The derivative of a vector valued function is defined as,
+$$\vec{r}'(t_0) = \lim_{t\to t_0}\frac{\vec{r}(t)-\vec{r}(t_0)}{t-t_0}$$
+Such that $\vec{r}'(t_0)$ is the tangent vector of the curve at $t = t_0$
+The derivative can also be defined as,
+$$\vec{r}'(t_0) = \langle f'(t),g'(t),h'(t) \rangle$$
+Something important to remember is that you must do product rule when taking the derivative of a vector function that is multiplied by another vector function or a function of t. The algebraic Properties of the derivative of a vector function are as follows:
+\begin{align*}
+    &1)\hspace{1cm}\diff{}{t}(a\cdot\vec{r}(t)+b\cdot\vec{\rho}(t))= a\cdot\vec{r}'(t)+b\cdot\vec{\rho}'(t)\hspace{0.5cm}a,b\in\mathbb{R}^1 \\
+    &2)\hspace{1cm}\diff{}{t}(f(t)\cdot\vec{r}(t))= f'(t)\vec{r}(t)+f(t)\cdot\vec{r}'(t) \\
+    &3)\hspace{1cm}\diff{}{t}(\vec{u}(t)\cdot\vec{v}(t))= \vec{u}'(t)\cdot\vec{v}(t)+\vec{u}(t)\cdot\vec{v}'(t) \\
+    &4)\hspace{1cm}\diff{}{t}(\vec{u}(t)\times\vec{v}(t))= \vec{u}'(t)\times\vec{v}(t)+\vec{u}(t)\times\vec{v}'(t) \\
+    &5)\hspace{1cm}\diff{}{t}[\vec{u}(f(t))]=\vec{u}'(f(t))\cdot f'(t)
+\end{align*}
+
+
+\subsection{Properties of Vector-Valued Functions}
+
+\subsubsection{Physical Quantities of Vector-Valued Functions}
+Position:
+$$\vec{r}(t)$$
+Velocity:
+$$\vec{v}(t) = \vec{r}'(t)$$
+Speed:
+$$v(t) = \lvert \vec{v}(t) \rvert = \lvert \vec{r}'(t) \rvert$$
+Acceleration:
+$$\vec{a} = \vec{v}'(t) = \vec{r}''(t)$$
+
+\subsubsection{Geometric Quantities of Vector-Valued Functions}
+\begin{wrapfigure}{r}{0.4\textwidth}
+    \includegraphics[width=0.4\textwidth]{UnitTNB.png}
+    \label{fig:enter-label}
+\end{wrapfigure}
+The Unit Tangent vector describes the direction of the rate of change of the vector function at a given time. It can be thought of as the direction of velocity because it's magnitude is always equal to 1. It's a normalization of $\vec{v}(t)$
+$$\vec{t}(t) = \frac{\vec{r}'(t)}{\lvert\vec{r}'(t)\rvert}$$
+Unit Normal:
+The Unit Normal vector describes the direction of the rate of change of the Unit Tangent vector at a given time. It described the change in direction of the Unit Tangent vector but not the change in magnitude since $\lvert\vec{T}(t)\rvert = 1$.
+$$\vec{N}(t) = \frac{\vec{T}'(t)}{\lvert\vec{T}'(t)\rvert}$$
+The Unit Binormal vector is the cross product of the Unit Tangent and Unit Normal. 
+$$\vec{B}(t) = \vec{T}(t) \times \vec{N}(t)$$
+
+The plane determined by the normal and binormal vectors is called the Normal Plane. All lines contained in the normal plane are orthogonal to the unit tangent vector. The osculating plane contains the unit tangent and normal vectors. The osculating plane is the plane described by the unit vectors that is closest to containing the curve. In a plane curve, the osculating plane is the plane that contains the curve. (For my class, we did not need to know these planes, but this does help you understand torsion). 
+
+\subsubsection{Arc Length}
+How far something has traveled. 
+$$L(a,b) = \int_a^b{\sqrt{[x'(t)]^2+[y'(t)]^2+[z'(t)]^2}}\text{d}t$$
+$$L=\int_a^b|\vec{r}'(t)|\text{d}t$$
+
+\subsubsection{Arc Length Re-parametrization}
+Arc Length Re-parametrization exists to change the vector function $\vec{r}(t)$ such that the new vector $\vec{\rho}(s)$ function satisfies $\lvert\vec{\rho}(s)\rvert$. 
+
+To do this, 1) evaluate
+$$s(t) = \int_0^t{\lvert\vec{r}(\theta)\rvert}\text{d}\theta$$
+2) Find t in terms of s
+
+3) Evaluate
+$$\vec{\rho}(s) = \vec{r}(t(s))$$
+
+\subsubsection{Curvature}
+How much something bends inside a 2D plane (inside the osculating plane). It is essentially describing the large the normal vector is for a given distance traveled, hence, the derivative with respect to s (the arc length) instead of t. 
+$$\kappa(\rho) = \left| \diff{\vec{T}}{s} \right| = \left| \frac{\diff{\vec{T}'(t)}{t}}{\diff{\vec{s}}{t}} \right| = \frac{\vec{T}'(t)}{\lvert \vec{r}'(t) \rvert} = \frac{|\vec{r}'(t)\times\vec{r}''(t)|}{|\vec{r}'(t)|^3}$$
+
+\subsubsection{Torsion}
+How much a curve bends the osculating plane. It measures how much the osculating plane changes as a point moves along the curve or how much the curve twists out of the osculating plane. Torsion is positive if the curve twists in the direction of the binormal vector. 
+$$\tau(\rho) = - \diff{\vec{B}}{s}\cdot\vec{N} = - \frac{\vec{B}'(t)\cdot\vec{N}(t)}{|\vec{r}'(t)|} = \frac{(\vec{r}'(t)\times\vec{r}''(t))\cdot\vec{r}'''(t)}{|\vec{r}'(t)\times\vec{r}''(t)|^2}$$
+
+\section{Chapter 14: Partial Derivatives}
+
+\subsection{Multi-variable Functions}
+A function of two variables $f(x,y)$ is a rule that assigns an order pair $(x,y)$, its domain D, a unique number $f(x,y)$ in $\mathbb{R}^1$.The domain and range of a function of three variables would be defined as,
+$$D: \left\{ (x,y,z)\in\mathbb{R}^3 | \text{any restrictions the function has}\right\}$$
+$$R: \left\{ f(x,y) | (x,y) \in D \right\}$$
+
+\subsubsection{Graphs}
+\begin{wrapfigure}{r}{0.4\textwidth}
+    \centering
+    \includegraphics[width=0.4\textwidth]{MultivariableGraph.png}
+\end{wrapfigure}
+Given f is a function of of two variables with domain D, then the graph of f is the set of all points $(x,y,z)\text{ in }\mathbb{R}^3$ such that $z=f(x,y)$ and $(x,y)\in$D.
+
+\subsubsection{Level Curves and Contour Maps}
+An equation is a level curve of a function and is usually defined as $f(x,y)=k$ such that it is the set of all points in the domain of f at which f takes on the value of k. You can also have level surfaces of functions with more variables such as $F(x,y,z)=k$. This is important for Lagrange Multipliers. A contour map is a collection of level curves. 
+
+\subsection{Limits and Continuity}
+
+\subsubsection{Limits}
+The informal definition of a limit is shown as,
+$$\lim_{(x,y)\to(a,b)}f(x,y) = L$$
+The formal definition of a limit is another Delta-Epsilon proof:
+$$0 < \sqrt{(x-a)^2+(y-b)^2} < \delta \hspace{1 cm} |f(x,y) - L|<\epsilon$$
+
+\subsubsection{Limit Evaluation}
+A limit exists if and only if the limit along any path exists and agree. We have been given 3 methods by which we can evaluate limits:
+
+Method 0: by delta-epsilon proof. We are not required to know this because it's hard (upper-div math).
+
+Method 1: By algebraic properties of limits
+$$\lim(f \pm g) = \lim(f) \pm \lim(g)$$
+$$\lim(f\cdot g) = \lim(f) \cdot \lim(g)$$
+$$\lim{\left( \frac{f}{g} \right)} = \frac{\lim(f)}{\lim(g)}$$
+
+Method 2: By squeeze theorem
+$$\text{if }f(x,y) \leq g(x,y) \leq h(x,y) \text{for (x,y) near (a,b)}$$
+$$\text{and} \lim_{(x,y)\to(a,b)}{f(x,y)} = \lim_{(x,y)\to(a,b)}{h(x,y)} = L$$
+
+Method 3: By polars. This is a fake theorem since it is not always true but it works for limits shown in this course. 
+$$\lim_{(x,y)\to(0,0)}{f(x,y)} = \lim_{r\to 0^+}{f(r\cos{\theta},r\sin{\theta})}$$
+
+We can also prove a limit does not exist by creating a set of lines that approach the limits. For example, we might want to evaluate $f(x,y)$ as it approaches $(0,0)$. We can evaluate the limit along the set of lines described by $y=kx$ such that $k\in\mathbb{R}^1$. If the resulting limit has more than one possible answer, then the limit does not exist. If the limit survives this first attempt, we can also evaluate the limit along the set of curves $y=kx^2$. Depending on the function, there are other sets of curves that may fit better such as $y=k\sqrt{x}$. 
+
+\subsubsection{Continuity}
+Function $f(x,y): D\subset \mathbb{R}^2 \rightarrow \text{IR}^1$ is said to be continuous at point $(a,b)\in D$ if
+$$\lim_{(x,y)\to(a,b)}{f(x,y)} = f(a,b)$$
+$f(x,y) \text{is continuous for}$
+$$\{ (x,y) \in \mathbb{R}^2 | (x,y) \neq (0,0) \}$$
+
+\subsection{Partial Derivatives}
+For the function $f(x,y)$, you can take the partial derivative $f_x(x,y)$ by taking the derivative as if it were a single variable function and treating 'y' as a constant. The limit definition of the partial derivative of a two variable function is as follows,
+$$\diffp*{f}{x}{(a,b)} = \lim_{(x,y)\to(a,b)}{\frac{f(x,b) - f(a,b)}{x-a}}$$
+$$\diffp*{f}{y}{(a,b)} = \lim_{(x,y)\to(a,b)}{\frac{f(a,y) - f(a,b)}{y-b}}$$
+Some notation stuff:
+$$\diffp{f}{x} = f_x = f_1 = D_1f = D_xf$$
+$$\diffp{f}{y} = f_y = f_2 = D_2f = D_yf$$
+
+\subsubsection{Higher Order Partial Derivatives}
+Given that f is a function of two variables (x,y), then $f_x$ and $f_y$ are also functions of two variables. So we can consider the second order partial derivatives to be (please note that some notation differs depending on textbook),
+$$(f(x)_x)_x = f_{xx} = f_{11} = \diffp{}{x}(\diffp{f}{x}) = \diffp[2]{f}{x} = \diffp[2]{z}{x}$$
+$$(f(x)_x)_y = f_{xy} = f_{12} = \diffp{}{y}(\diffp{f}{x}) = \diffp{f}{{y}{x}} = \diffp{z}{{x}{y}}$$
+$$(f(x)_y)_x = f_{yx} = f_{21} = \diffp{}{x}(\diffp{f}{y}) = \diffp{f}{{x}{y}} = \diffp{z}{{y}{x}}$$
+$$(f(x)_y)_y = f_{yy} = f_{22} = \diffp{}{y}(\diffp{f}{y}) = \diffp[2]{f}{y} = \diffp[2]{z}{y}$$
+The Hessian matrix is a matrix containing all the 2nd order partial derivatives of a multi-variable function. For function $f(x,y)$, the matrix is as follows:
+$$D^2f(x,y) = 
+\left[ \begin{matrix}
+f_{xx} & f_{xy} \\
+f_{yx} & f_{yy}
+\end{matrix} \right]$$
+
+\subsubsection{Clairaut's Theorem}
+$\textbf{This has a name, therefore, it's very important.}$ Given function $f(x,y): D \subset \mathbb{R}^2 \longrightarrow \mathbb{R}^1$, if both $f_{xy}(x,y)$ and $f_{yx}(x,y)$ exist and are continuous at point $(a,b) \in D$, then the following is true,
+$$f_{xy}(a,b) = f_{yx}(a,b)$$
+
+\subsubsection{Partial Differential Equations}
+We do not need to know too much about these but he introduced them for Math 2E. A partial differential equation is a differential equation but with multi-variable functions instead. 
+
+The first equation is the Elliptic PDE, also known as the Laplace Equation,
+$$\text{Equation } u(x,y,z) \text{ such that: } u_{xx} + u_{yy} + u_{zz} = 0$$
+The second equation is the Parabolic PDE, also known as the Heat Equation,
+$$\text{Equation } u(x,y,z,t) \text{ such that: } u_t = u_{xx} + u_{yy} + u_{zz}$$
+The third equation is the Hyperbolic PDE, also known as the Wave Equation,
+$$\text{Equation } w(x,y,z,t) \text{ such that: } w_{tt} = w_{xx} + w_{yy} + w_{zz}$$
+
+
+\subsection{Tangent Planes and Linear Approximations}
+Linear approximations are just tangent planes but with an L instead of a z. 
+
+\subsubsection{Tangent Planes}
+Given $z = f(x,y)$, the equation of the plane tangent to the surface is as follows,
+$$z = f(x_0,y_0) + \diffp*{f}{x}{(x_0,y_0)}(x-x_0) + \diffp*{f}{y}{(x_0,y_0)}(y-y_0)$$
+
+\subsubsection{Linear Approximations}
+If we have a good function, we can approximate $f(x,y)$ by a linear function $L_{(x_0,y_0)}(x,y)$ for any $(x,y)$ near $(x_0,y_0)$,
+$$f(x,y)\approx L_{(x_0,y_0)}(x,y) = f(x_0,y_0) + f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0)$$
+
+\subsubsection{Differentials and Differentiability}
+Rough definition of Differentiability: a function $f(x,y)$ is differentiable at $(x_0,y_0)$ if for any $(x,y)$ near $(x_0,y_0)$ we can approximate $f(x,y)$ by a linear function.
+
+A differential is a notation thing and is as follows,
+$$df = \diffp{f}{x}dx + \diffp{f}{y}dy$$
+
+\subsection{Chain Rule}
+Chain rule yay. For a single-variable function like $f(g(x))$ is was
+$$[f(g(x))]' = f'(g(x)) \cdot g'(x)$$
+
+\subsubsection{Chain Rule Case 1}
+We shall define x and y to be single variable functions:
+$$\left\{ \begin{array}{lr}
+x = x(t) \\
+y = y(t)
+\end{array} \right.$$
+If $f(x,y)$, $x(t)$, and $y(t)$ are differentiable, then $f(x(t),y(t))$ is also differentiable,
+$$\diffp{f}{t} = \diffp{f}{x}\diff{x}{t} + \diffp{f}{y}\diff{y}{t}$$
+
+\subsubsection{Chain Rule Case 2}
+We shall define x and y to be multi-variable functions:
+$$\left\{ \begin{array}{lr}
+x = x(s,t) \\
+y = y(s,t)
+\end{array} \right.$$
+If $f(x,y)$, $x(s,t)$, and $y(s,t)$ are differentiable, then $f(x(s,t),y(s,t))$ is also differentiable,
+$$\diffp{f}{s} = \diffp{f}{x}\diffp{x}{s} + \diffp{f}{y}\diffp{y}{s}$$
+$$\diffp{f}{t} = \diffp{f}{x}\diffp{x}{t} + \diffp{f}{y}\diffp{y}{t}$$
+
+\subsubsection{Implicit Differentiation}
+Consider a level surface of function $F(x,y,z)$ to be $F(x,y,z) = c$. Suppose $z = z(x,y)$, this is guaranteed by the "Implicit Function Theorem" (if $F_z \neq 0$, then $z = z(x,y)$. Therefore $F(x,y,z(x,y)) = c$). Compute a partial derivative on both sides:
+$$F_x + F_z\cdot\diffp{z}{x} = 0$$
+Thus, we know that
+$$\diffp{z}{x} = -\frac{F_x}{F_z}$$
+and similarly
+$$\diffp{z}{y} = -\frac{F_y}{F_z}$$
+
+\subsection{Directional Derivatives and the Gradient Vector}
+
+\subsubsection{The Directional Derivatives}
+Instead of taking to derivative parallel to the x-axis or the y-axis, we might want to take the derivative in any direction. Hence, the directional derivative. 
+
+Consider function $f(x,y): D \subset \mathbb{R}^2 \longrightarrow \mathbb{R}^1$, $(x,y) \in F$, and $\vec{u} = \langle a,b \rangle$ where $\vec{u}$ is a unit vector. We can define the equation of the direction of approach as,
+$$\left\{ \begin{array}{lr}
+x(t) = x_0 + a\cdot t \\
+y(t) = y_0 + b\cdot t
+\end{array} \right.$$
+The limit definition of the directional derivative is,
+\begin{align}
+    D_{\vec{u}}f(x,y) &= \lim_{t\to 0}{\frac{f(x_0+at,y_0+bt) - f(x_0,y_0)}{t}}\nonumber \\
+&= \lim_{t\to0}{\frac{f(x(t),y(t)) - f(x(0),y(0))}{t}}\nonumber \\
+&= \diff*{}{t}{t=0}f(x(t),y(t) \nonumber \\
+&= a \cdot f_x(x_0,y_0) + b\cdot f_y(x_0,y_0) \nonumber \\
+&= \vec{u} \cdot \nabla f(x_0,y_0) \nonumber
+\end{align}
+
+The gradient is a vector containing the first order partial derivatives of a multi-variable function. For example, the gradient for $f(x,y,z)$ is
+$$\nabla f(x,y,z) = \langle f_x, f_y, f_z \rangle$$
+
+\subsubsection{Maximizing the Directional Derivative}
+The maximum rate of change is equal to the magnitude of the gradient since the magnitude of the unit vector equals 1.
+$$D_{max} = |\nabla f(x,y,z)|$$
+The direction of the maximum rate of change is, therefore, in the direction of the gradient vector. 
+$$\frac{\nabla f(x,y,z)}{|\nabla f(x,y,z)|}$$
+Important note: $\nabla F(x,y,z)$ is always perpendicular to its level surface $F(x,y,z) = c$. Therefore, the tangent plane to a level surface has a normal vector in the same direction as the gradient
+
+\subsection{Minimum and Maximum Values}
+Evaluate $\nabla f(x,y) = 0$. Meaning, find all points such that the previous equation is true. Then evaluate them using the 2nd Order Partial Derivative Test. 
+
+\subsubsection{2nd Order Partial Derivative Test}
+$$D = f_{xx}f_{yy} - [f_{xy}]^2$$
+If $D < 0$, then the point is a saddle point. 
+
+If $D > 0$ and $f_{xx} < 0$, then the point is a local maximum.
+
+If $D > 0$ and $f_{xx} > 0$, then the point is a local minimum.
+
+\subsubsection{Absolute/Global Minimums and Maximums}
+Find a critical points of the curve. Find the maximum and minimum of the curve for the edges of the domain. 
+
+\subsection{Lagrange Multipliers}
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.5\textwidth]{LagrangeMultiplier.png}    
+\end{wrapfigure}
+With Lagrange Multipliers, you are attempting to find the absolute minimum and maximum of a function given certain restraints. The Lagrange Multiplier allows you to do this even if you cannot isolate one variable which makes it powerful. 
+
+Essentially, you are trying to find a point such that the gradients of function $f(x,y)$ and level curve $g(x,y)=k$ are equal. We know the will be equal when the level curves are just barely touching. See the figure to the right. 
+
+We can expand this to functions with more variables and to situations with more than one constraint.
+
+\subsubsection{One Constraint}
+Given $f(x,y)$ and $g(x,y) = c$, find all $(x,y)$ that satisfy the following,
+$$\left\{ \begin{array}{lr}
+\nabla f(x,y) = \lambda \nabla g(x,y) \\
+g(x,y) = c
+\end{array} \right.$$
+Evaluate all the points you find and the largest value is max, the smallest is min. 
+
+\subsubsection{Two Constraints}
+Not necessary for class. 
+$$\left\{ \begin{array}{lr}
+\nabla f(x,y) = \lambda \nabla g(x,y) \\
+\nabla f(x,y) = \mu \nabla g(x,y) \\
+g(x,y) = c
+\end{array} \right.$$
+
+\end{document}
